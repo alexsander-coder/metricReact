@@ -2,17 +2,23 @@ import { useState } from 'react';
 import './App.css';
 import CreateClientForm from './CreateClientForm';
 import ClientList from './ClientList';
+import MapView from './MapView';
+
 
 function App() {
 
   const [isCreateClientFormVisible, setIsCreateClientFormVisible] = useState(false);
   const [isClientListVisible, setIsClientListVisible] = useState(false);
+  const [isMapViewVisible, setIsMapViewVisible] = useState(false);
   const [clients, setClients] = useState([]);
 
   const handleCreateClientClick = () => {
     setIsCreateClientFormVisible(!isCreateClientFormVisible);
     if (isClientListVisible) {
       setIsClientListVisible(false);
+    }
+    if (isMapViewVisible) {
+      setIsMapViewVisible(false)
     }
   };
 
@@ -21,6 +27,9 @@ function App() {
     setIsClientListVisible(!isClientListVisible);
     if (isCreateClientFormVisible) {
       setIsCreateClientFormVisible(false);
+    }
+    if (isMapViewVisible) {
+      setIsMapViewVisible(false)
     }
 
     if (!isClientListVisible) {
@@ -38,6 +47,16 @@ function App() {
     }
   };
 
+  const handleMapViewClick = () => {
+    setIsMapViewVisible(!isMapViewVisible);
+    if (isCreateClientFormVisible) {
+      setIsCreateClientFormVisible(false);
+    }
+    if (isClientListVisible) {
+      setIsClientListVisible(false);
+    }
+  };
+
   return (
     <div>
       <button onClick={handleCreateClientClick}>
@@ -46,8 +65,12 @@ function App() {
       <button onClick={handleListClick}>
         {isClientListVisible ? 'Fechar Lista' : 'Listar Clientes'}
       </button>
+      <button onClick={handleMapViewClick}>
+        {isMapViewVisible ? 'Fechar Mapa' : 'ROTAS'}
+      </button>
       {isCreateClientFormVisible && <CreateClientForm isVisible={isCreateClientFormVisible} />}
       {isClientListVisible && <ClientList clients={clients} />}
+      {isMapViewVisible && <MapView />}
     </div>
   );
 }
