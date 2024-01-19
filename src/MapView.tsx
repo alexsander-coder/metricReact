@@ -32,17 +32,17 @@ const empresaIcon = new L.Icon({
 function adicionarMarcadores(map: L.Map, usuarios: Cliente[]) {
   usuarios.forEach((usuario) => {
     const coordenadas = usuario.coordenadas.split(',').map(Number);
-
     let marker;
 
-    if (usuario.id === 7) {
-      marker = L.marker(coordenadas as LatLngExpression, { icon: empresaIcon }).addTo(map);
+    if (usuario.id === 7) { // ID da empresa
+      marker = L.marker(coordenadas as LatLngExpression, { icon: empresaIcon });
+      marker.bindPopup("<strong>VOCÊ ESTÁ AQUI</strong>");
     } else {
-      marker = L.marker(coordenadas as LatLngExpression, { icon: customIcon }).addTo(map);
+      marker = L.marker(coordenadas as LatLngExpression, { icon: customIcon });
       marker.bindPopup(`<strong><span>Cliente: </span></strong>${usuario.nome}<br/><br/><strong><span>Contato: </span></strong>${usuario.telefone}`);
     }
 
-    map.addLayer(marker);
+    marker.addTo(map);
   });
 }
 
