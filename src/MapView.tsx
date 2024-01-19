@@ -61,7 +61,7 @@ function MapView() {
         }
         const data = await resposta.json();
         setUsuarios(data);
-        const mapInstance = L.map('map').setView(empresa, 13);
+        const mapInstance = L.map('map').setView(empresa, 10.5);
         L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         }).addTo(mapInstance);
@@ -126,25 +126,48 @@ function MapView() {
     transform: 'translate(-50%, -50%)',
     backgroundColor: 'white',
     padding: '20px',
-    border: '1px solid black',
+    boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    borderRadius: '10px',
     zIndex: 1000,
     maxWidth: '80%',
     maxHeight: '80%',
+    textAlign: 'center',
     overflowY: 'auto'
   };
 
+
   const estiloLista = {
-    listStyleType: 'none',
-    paddingLeft: 0
+    listStyle: 'none',
+    padding: 0
   };
 
   const estiloItem = {
-    counterIncrement: 'item'
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    borderBottom: '1px solid #eee',
+    padding: '10px 0'
   };
 
   const estiloNumero = {
-    marginRight: '5px'
+    fontWeight: 'bold',
+    marginRight: '10px'
   };
+
+  const estiloBotao = {
+    padding: '6px 12px',
+    margin: '10px 0',
+    border: 'none',
+    borderRadius: '4px',
+    cursor: 'pointer',
+    backgroundColor: '#007bff',
+    color: 'white'
+  };
+
+  const botaoFechar = {
+    backgroundColor: 'rgb(255, 97, 97)',
+    color: 'white'
+  }
 
   function ModalClientesProximos() {
     if (!isModalOpen) return null;
@@ -157,13 +180,13 @@ function MapView() {
             <li key={cliente.id} style={estiloItem}>
               <span style={estiloNumero}>{index + 1}º</span>
               {cliente.nome}
-              <button onClick={() => selecionarCliente(cliente)} style={{ marginLeft: '10px' }}>
+              <button onClick={() => selecionarCliente(cliente)} style={estiloBotao}>
                 View
               </button>
             </li>
           ))}
         </ol>
-        <button onClick={() => setIsModalOpen(false)}>Fechar</button>
+        <button style={botaoFechar} onClick={() => setIsModalOpen(false)}>Fechar</button>
       </div>
     );
   }

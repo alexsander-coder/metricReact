@@ -1,5 +1,5 @@
 import { useState } from 'react';
-
+import './clientList.css';
 interface ClientListProps {
   clients: Array<{
     id: number;
@@ -97,8 +97,8 @@ function ClientList({ clients }: ClientListProps) {
             <td>
               {editingId === client.id ? (
                 <>
-                  <button onClick={() => handleSaveClick(client.id)}>Salvar</button>
-                  <button onClick={handleCancelClick}>Cancelar</button>
+                  <button id='salvar' onClick={() => handleSaveClick(client.id)}>Salvar</button>
+                  <button id='cancelar' onClick={handleCancelClick}>Cancelar</button>
                 </>
               ) : (
                 <button onClick={() => handleEditClick(client)}>Editar</button>

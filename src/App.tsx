@@ -60,7 +60,7 @@ function App() {
   return (
     <div>
       <button onClick={handleCreateClientClick}>
-        {isCreateClientFormVisible ? 'Fechar Formulário' : 'Criar Cliente'}
+        {isCreateClientFormVisible ? 'Fechar Formulário' : 'Cadastrar Cliente'}
       </button>
       <button onClick={handleListClick}>
         {isClientListVisible ? 'Fechar Lista' : 'Listar Clientes'}
