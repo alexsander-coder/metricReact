@@ -66,7 +66,7 @@ function App() {
         {isClientListVisible ? 'Fechar Lista' : 'Listar Clientes'}
       </button>
       <button onClick={handleMapViewClick}>
-        {isMapViewVisible ? 'Fechar Mapa' : 'ROTAS'}
+        {isMapViewVisible ? 'Fechar Mapa' : 'Mapas clientes'}
       </button>
       {isCreateClientFormVisible && <CreateClientForm isVisible={isCreateClientFormVisible} />}
       {isClientListVisible && <ClientList clients={clients} />}

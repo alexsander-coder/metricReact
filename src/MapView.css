@@ -1,0 +1,10 @@
+.div-icon span {
+  position: absolute;
+  top: -20px;
+  left: 20px;
+  background: white;
+  padding: 3px 6px;
+  border: 1px solid #666;
+  border-radius: 3px;
+  font-size: 12px;
+}

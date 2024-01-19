@@ -58,7 +58,7 @@ function ClientList({ clients }: ClientListProps) {
         </tr>
       </thead>
       <tbody>
-        {clients.map((client) => (
+        {clients.filter(client => client.id !== 7).map((client) => (
           <tr key={client.id}>
             <td>{client.id}</td>
             <td>
