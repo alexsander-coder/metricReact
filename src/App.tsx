@@ -59,15 +59,17 @@ function App() {
 
   return (
     <div>
-      <button onClick={handleCreateClientClick}>
-        {isCreateClientFormVisible ? 'Fechar Formulário' : 'Cadastrar Cliente'}
-      </button>
-      <button onClick={handleListClick}>
-        {isClientListVisible ? 'Fechar Lista' : 'Listar Clientes'}
-      </button>
-      <button onClick={handleMapViewClick}>
-        {isMapViewVisible ? 'Fechar Mapa' : 'Mapas clientes'}
-      </button>
+      <div className="button-container"> {/* Use a classe para centralizar */}
+        <button className="button" onClick={handleCreateClientClick}>
+          {isCreateClientFormVisible ? 'Fechar Formulário' : 'Cadastrar Cliente'}
+        </button>
+        <button className="button" onClick={handleListClick}>
+          {isClientListVisible ? 'Fechar Lista' : 'Listar Clientes'}
+        </button>
+        <button className="button" onClick={handleMapViewClick}>
+          {isMapViewVisible ? 'Fechar Mapa' : 'Mapas clientes'}
+        </button>
+      </div>
       {isCreateClientFormVisible && <CreateClientForm isVisible={isCreateClientFormVisible} />}
       {isClientListVisible && <ClientList clients={clients} />}
       {isMapViewVisible && <MapView />}

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import customIcon from './iconmap.webp';
 
 interface CreateClientFormProps {
   isVisible?: boolean;
@@ -14,6 +15,14 @@ function CreateClientForm({ isVisible = false }: CreateClientFormProps) {
   const [localizacao, setLocalizacao] = useState<{ lat: number; lng: number } | null>(null);
   const mapRef = useRef<L.Map | null>(null);
   const mapContainerRef = useRef<HTMLDivElement | null>(null);
+
+  const customMarkerIcon = L.icon({
+    iconUrl: customIcon,
+    iconSize: [32, 32], // Defina o tamanho do ícone conforme necessário
+    iconAnchor: [16, 32], // Define o ponto de ancoragem do ícone
+    popupAnchor: [0, -32], // Define a posição do pop-up em relação ao ícone
+  });
+
 
   // const [currentMarker, setCurrentMarker] = useState<L.Marker | null>(null);
 
@@ -32,7 +41,8 @@ function CreateClientForm({ isVisible = false }: CreateClientFormProps) {
           localMap.removeLayer(currentMarker);
         }
 
-        currentMarker = L.marker([e.latlng.lat, e.latlng.lng]).addTo(localMap);
+        currentMarker = L.marker([e.latlng.lat, e.latlng.lng], { icon: customMarkerIcon }).addTo(localMap);
+
 
         setLocalizacao(e.latlng);
       });

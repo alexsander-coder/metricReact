@@ -34,7 +34,7 @@ function adicionarMarcadores(map: L.Map, usuarios: Cliente[]) {
     const coordenadas = usuario.coordenadas.split(',').map(Number);
     let marker;
 
-    if (usuario.id === 7) { // ID da empresa
+    if (usuario.nome === "empresa") {
       marker = L.marker(coordenadas as LatLngExpression, { icon: empresaIcon });
       marker.bindPopup("<strong>VOCÊ ESTÁ AQUI</strong>");
     } else {
@@ -45,6 +45,7 @@ function adicionarMarcadores(map: L.Map, usuarios: Cliente[]) {
     marker.addTo(map);
   });
 }
+
 
 function MapView() {
   const [clientesProximos, setClientesProximos] = useState<Cliente[]>([]);
@@ -83,7 +84,7 @@ function MapView() {
         }
       });
 
-      const empresaEncontrada = usuarios.find(u => u.id === 7);
+      const empresaEncontrada = usuarios.find(u => u.nome === "empresa");
       if (empresaEncontrada) {
         adicionarMarcadores(map, [cliente, empresaEncontrada]);
       } else {
