@@ -182,7 +182,7 @@ function MapView() {
               <span style={estiloNumero}>{index + 1}º</span>
               {cliente.nome}
               <button onClick={() => selecionarCliente(cliente)} style={estiloBotao}>
-                View
+                Filtrar
               </button>
             </li>
           ))}
@@ -194,13 +194,15 @@ function MapView() {
 
   return (
     <div>
-      <h2>Mapa de Rotas</h2>
-      <button onClick={buscarClientesProximos}>Exibir cliente mais próximo</button>
-      <button onClick={removerFiltro}>Remover filtro</button>
-
+      <h2 style={{ display: 'flex', justifyContent: 'center' }}>Mapa de Rotas</h2>
+      <div className="button-container">
+        <button className="button" onClick={buscarClientesProximos}>Exibir cliente mais próximo</button>
+        <button className="button" onClick={removerFiltro}>Remover filtro</button>
+      </div>
       <div id="map" style={{ height: '400px' }}></div>
       <ModalClientesProximos />
     </div>
+
   );
 }
 

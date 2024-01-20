@@ -18,9 +18,9 @@ function CreateClientForm({ isVisible = false }: CreateClientFormProps) {
 
   const customMarkerIcon = L.icon({
     iconUrl: customIcon,
-    iconSize: [32, 32], // Defina o tamanho do ícone conforme necessário
-    iconAnchor: [16, 32], // Define o ponto de ancoragem do ícone
-    popupAnchor: [0, -32], // Define a posição do pop-up em relação ao ícone
+    iconSize: [32, 32],
+    iconAnchor: [16, 32],
+    popupAnchor: [0, -32],
   });
 
 
@@ -144,15 +144,15 @@ function CreateClientForm({ isVisible = false }: CreateClientFormProps) {
       <form onSubmit={handleSubmit} style={formStyle}>
         <div style={inputGroupStyle}>
           <label style={labelStyle}>Nome:</label>
-          <input type="text" value={nome} onChange={handleNomeChange} style={inputStyle} />
+          <input type="text" value={nome} onChange={handleNomeChange} style={inputStyle} required />
         </div>
         <div style={inputGroupStyle}>
           <label style={labelStyle}>Email:</label>
-          <input type="email" value={email} onChange={handleEmailChange} style={inputStyle} />
+          <input type="email" value={email} onChange={handleEmailChange} style={inputStyle} required />
         </div>
         <div style={inputGroupStyle}>
           <label style={labelStyle}>Telefone:</label>
-          <input type="text" value={telefone} onChange={handleTelefoneChange} style={inputStyle} />
+          <input type="text" value={telefone} onChange={handleTelefoneChange} style={inputStyle} required />
         </div>
         <button type="submit" style={submitButtonStyle}>Enviar</button>
       </form>
